@@ -36,6 +36,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   animated_button: ^0.2.0
   google_fonts: ^2.2.0
+  dotted_border: ^2.0.0+2
+  video_player: ^2.2.14
+  noise_meter: ^3.0.3
+  auth0: ^2.0.2
 
 dev_dependencies:
   flutter_test:
@@ -62,6 +66,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
+    - assets/animation1.mp4
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

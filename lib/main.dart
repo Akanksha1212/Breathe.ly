@@ -1,50 +1,57 @@
+import 'package:breathely/Screens/game.dart';
 import 'package:breathely/Screens/home.dart';
+import 'package:breathely/Screens/result.dart';
 import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
 import 'package:flutter/services.dart';
 
-void main() async {
-  runApp(MyApp());
+void main() {
+  runApp(MaterialApp(
+    title: 'Breathe.ly',
+    initialRoute: '/',
+    onGenerateRoute: (settings) {
+      switch (settings.name) {
+        case '/':
+          return MaterialPageRoute(builder: (context) => MyApp());
+        case '/home':
+          return MaterialPageRoute(builder: (context) => Home());
+        case '/game':
+          return MaterialPageRoute(builder: (context) => VideoPlayerScreen());
+        case '/result':
+          return MaterialPageRoute(builder: (context) => Result());
+
+        // case '/result':
+        //   return MaterialPageRoute(builder: (context) => Result());
+      }
+    },
+    debugShowCheckedModeBanner: false,
+    home: MyApp(),
+  ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    // Set landscape orientation
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeLeft,
-      DeviceOrientation.landscapeRight,
-    ]);
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Splash(),
-    );
-  }
+  _MyAppState createState() => _MyAppState();
 }
 
-class Splash extends StatefulWidget {
-  @override
-  _MyAppState createState() => new _MyAppState();
-}
-
-class _MyAppState extends State<Splash> {
+class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
     Future.delayed(
       Duration(seconds: 3),
-      () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Home(),
-          ),
-        );
-      },
+      // () => Navigator.pushReplacementNamed(context, '/meditation'),
+      // () => Navigator.pushReplacementNamed(context, '/bingo'),
+      () => Navigator.pushReplacementNamed(context, '/home'),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
     return Scaffold(
       backgroundColor: Colors.white,
       // body: Container(
